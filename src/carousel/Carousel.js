@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, FlatList, Animated, Platform, I18nManager, ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
 import shallowCompare from 'react-addons-shallow-compare';
+import InvertibleScrollView from 'react-native-invertible-scroll-view';
 
 const IS_IOS = Platform.OS === 'ios';
 
@@ -44,7 +45,8 @@ export default class Carousel extends Component {
         shouldOptimizeUpdates: PropTypes.bool,
         swipeThreshold: PropTypes.number,
         vertical: PropTypes.bool,
-        onSnapToItem: PropTypes.func
+        onSnapToItem: PropTypes.func,
+        inverted: PropTypes.bool
     };
 
     static defaultProps = {
@@ -66,7 +68,8 @@ export default class Carousel extends Component {
         slideStyle: {},
         shouldOptimizeUpdates: true,
         swipeThreshold: 20,
-        vertical: false
+        vertical: false,
+        inverted: false
     }
 
     constructor (props) {
@@ -751,7 +754,8 @@ export default class Carousel extends Component {
             sliderWidth,
             sliderHeight,
             style,
-            vertical
+            vertical,
+            inverted
         } = this.props;
 
         if (!data || !renderItem) {
@@ -783,6 +787,7 @@ export default class Carousel extends Component {
 
         return (
             <AnimatedFlatList
+              renderScrollComponent={props => <InvertibleScrollView {...props} inverted={inverted} />}
               decelerationRate={enableMomentum ? 0.9 : 'fast'}
               showsHorizontalScrollIndicator={false}
               showsVerticalScrollIndicator={false}

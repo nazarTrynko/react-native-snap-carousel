@@ -32,7 +32,8 @@
     "license": "ISC",
     "dependencies": {
         "prop-types": "^15.5.10",
-        "react-addons-shallow-compare": "15.6.0"
+        "react-addons-shallow-compare": "15.6.0",
+        "react-native-invertible-scroll-view": "1.1.0"
     },
     "peerDependencies": {
         "react": "*",

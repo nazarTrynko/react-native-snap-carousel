@@ -174,6 +174,7 @@ Prop | Description | Type | Default
 `shouldOptimizeUpdates` | Whether to implement a `shouldComponentUpdate` strategy to minimize updates | Boolean | `true`
 `swipeThreshold` | Delta x when swiping to trigger the snap | Number | `20`
 `vertical` | Layout slides vertically instead of horizontally | Boolean | `false`
+`inverted` | Scrolls from the end | Boolean | `false`
 
 ### Autoplay
 
