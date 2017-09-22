@@ -100,7 +100,7 @@ export default class Carousel extends Component {
         this._onScrollBeginDrag = props.enableSnap ? this._onScrollBeginDrag.bind(this) : undefined;
         this._onScrollEnd = props.enableSnap || props.autoplay ? this._onScrollEnd.bind(this) : undefined;
         this._onScrollEndDrag = !props.enableMomentum ? this._onScrollEndDrag.bind(this) : undefined;
-        this._onMomentumScrollEnd = props.enableMomentum ? this._onMomentumScrollEnd.bind(this) : undefined;
+        this._onMomentumScrollEnd = this._onMomentumScrollEnd.bind(this);
         this._onTouchStart = this._onTouchStart.bind(this);
         this._onTouchRelease = this._onTouchRelease.bind(this);
 
@@ -467,10 +467,6 @@ export default class Carousel extends Component {
     _onScrollEndDrag (event) {
         const { onScrollEndDrag } = this.props;
 
-        if (this._flatlist) {
-            this._onScrollEnd && this._onScrollEnd();
-        }
-
         if (onScrollEndDrag) {
             onScrollEndDrag(event);
         }
@@ -479,10 +475,6 @@ export default class Carousel extends Component {
     // Used when `enableMomentum` is ENABLED
     _onMomentumScrollEnd (event) {
         const { onMomentumScrollEnd } = this.props;
-
-        if (this._flatlist) {
-            this._onScrollEnd && this._onScrollEnd();
-        }
 
         if (onMomentumScrollEnd) {
             onMomentumScrollEnd(event);
