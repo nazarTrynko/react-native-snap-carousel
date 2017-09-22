@@ -467,6 +467,10 @@ export default class Carousel extends Component {
     _onScrollEndDrag (event) {
         const { onScrollEndDrag } = this.props;
 
+        if (this._flatlist) {
+            this._onScrollEnd && this._onScrollEnd();
+        }
+
         if (onScrollEndDrag) {
             onScrollEndDrag(event);
         }
@@ -475,10 +479,10 @@ export default class Carousel extends Component {
     // Used when `enableMomentum` is ENABLED
     _onMomentumScrollEnd (event) {
         const { onMomentumScrollEnd } = this.props;
-
-        if (onMomentumScrollEnd) {
-            onMomentumScrollEnd(event);
-        }
+        //
+        // if (onMomentumScrollEnd) {
+        //     onMomentumScrollEnd(event);
+        // }
     }
 
     _onScrollEnd (event) {
